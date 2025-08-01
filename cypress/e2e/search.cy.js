@@ -13,7 +13,7 @@ describe('Search function tests', () => {
       .click(); // klikin nupul
     cy.get('#autocomplete_search') // liigun otsinguribale
       .should('be.visible') // kontrollin, et element on nähtav
-      .click() // Palun sellel klikkida, et oleks võimalik märksõna sisetada
+      .click() // Palun sellel klikkida, et oleks võimalik märksõna sisestada
       .type('praktika{enter}'); // otsingusõna sisestatakse ja aktiveeritakse vajutades ENTER
     cy.get('#search-results') // palun võtta tulemused
       .should('be.visible') // kontrollin, et need oleks nähtavad
