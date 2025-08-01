@@ -1,0 +1,27 @@
+describe('Search function tests', () => {
+  beforeEach(() => {
+    cy.visit('https://www.smit.ee/et');   // külastan veebilehte enne igat testi
+
+    cy.get('a.logo', { timeout: 60000 }).should('be.visible'); // ootan kuni lehe headeris logo laeb, et elemendid muutuksid nähtavaks
+
+  });
+
+
+  it('Check that search gives relevant results with correct keyword', () => {
+    cy.get('div.srch-btn.fcon.fcon-l') // palun lehelt võtta otsingunupu
+      .should('be.visible') // kontrollin, et see oleks nähtav
+      .click(); // sunnin nupul klikkima
+    cy.get('#autocomplete_search') // liigub searcbarile
+      .should('be.visible') // kontrollin, et element on nähtav
+      .click() // Palun sellel klikkida, et oleks võimalik märksõna sisetada
+      .type('praktika{enter}'); // otsingusõna sisestatakse ja aktiveeritakse vajutades ENTER
+    cy.get('#search-results') // palun võtta tulemused
+      .should('be.visible') // kontrollin, et need oleks nähtavad
+      .and('contain', 'praktika'); // kontrollin, et vasted oleksid asjakohased ja sisaldaksid märksõna praktika
+  });
+
+      
+});
+
+
+
