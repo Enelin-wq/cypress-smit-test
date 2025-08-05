@@ -1,11 +1,14 @@
 describe('Search function tests', () => {
   beforeEach(() => {
     cy.visit('https://www.smit.ee/et');   // külastan veebilehte enne igat testi
-
     cy.get('a.logo', { timeout: 60000 }).should('be.visible'); // ootan kuni lehe headeris logo laeb, et elemendid muutuksid nähtavaks
 
   });
 
+   afterEach(() => {
+        cy.clearCookies();  // Puhastab brauseri küpsised, pärast igat testi
+
+  });
 
   it('Check that search gives relevant results with correct keyword', () => {
     cy.get('div.srch-btn.fcon.fcon-l') // palun lehelt võtta otsingunupu
